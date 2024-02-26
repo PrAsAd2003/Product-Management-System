@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<header th:replace="~{navBar :: newHeader}"></header>
+
+<div class = "container" style="margin-top: 100px;">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="font-weight:bold">Save Product</h1>
+                </div>
+                <div class="panel-body">
+                    <form action="#" th:action="@{/saveProduct}" th:object="${product}" method="POST">
+
+                        <input type="hidden" th:field="*{productId}" />
+                        <div>
+                            <input type="text" th:field="*{productName}" placeholder="Product Name"  required autofocus class="form-control">
+                        </div><br>
+                        <div>
+                            <input type="text" th:field="*{brand}" placeholder="Product Brand Name"   required autofocus  class="form-control">
+                        </div><br>
+                        <div>
+                            <input type="text" th:field="*{madeIn}" placeholder="Product Made in Country"   required autofocus  class="form-control">
+                        </div><br>
+
+                            <div>
+                            <input type="text" th:field="*{price}" placeholder="Product Price"  pattern="^\d+(\.\d{1,2})?$" required autofocus  class="form-control">
+                        </div><br>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-info col-2"> Save Product</button>
+                        </div>
+                    </form>
+
+                <hr>
+                <a th:href="@{/viewAllProductsPage}"> Back to Product List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
